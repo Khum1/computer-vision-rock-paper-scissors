@@ -15,15 +15,18 @@ def get_user_choice():
             print('That is not an option.')
             user_choice = input('Rock, Paper, Scissors...?')
 
-
+computer_wins = 0
+user_wins = 0
 
 def get_winner(computer_choice, user_choice):
     if user_choice == computer_choice:
         print('You tied.')
     elif user_choice == 'Rock' and computer_choice == 'Scissors' or user_choice == 'Paper' and computer_choice == 'Rock' or user_choice == 'Scissors' and computer_choice == 'Paper':
         print('You won!')
+        user_wins+=1
     else:
         print('You lose!')
+        computer_wins+=1
 
 def play():
     computer_choice = get_computer_choice()

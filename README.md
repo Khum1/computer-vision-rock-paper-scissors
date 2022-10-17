@@ -7,7 +7,8 @@ Technologies used: Teachable machine programme, downloaded through Tensorflow. T
 ## Milestone 4
 I created the game rock paper scissors with a user input, where the computer chooses between Rock, Paper, or Scissors, compares it to the users input and then a winner is decided based on the normal outcomes for a rock paper scissors game.
 Technologies used: python
-python```
+
+``` python
 import random
 
 options = ['Rock', 'Paper', 'Scissors']
@@ -43,4 +44,5 @@ def play():
 
 play()
 ```
-![](Screenshots/RPS1.PNG)
+![] (Screenshots/RPS1.PNG)
+
