@@ -3,7 +3,6 @@ import random
 import numpy as np
 import cv2
 import time
-RPS_Template
 
 class RPS:
     def __init__(self):

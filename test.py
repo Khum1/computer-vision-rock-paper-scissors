@@ -1,4 +1,5 @@
 import cv2
+import time
 
 def countdown(t):
     while t > 0:
@@ -9,4 +10,6 @@ def countdown(t):
         t -= 1
 
 
-countdown(3)
+# countdown(3)
+print (time.time())
+print (time.time()+2)
