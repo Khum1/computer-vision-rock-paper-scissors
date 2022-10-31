@@ -48,6 +48,7 @@ class RPS:
             print(sec, end='\r')
             cv2.waitKey(1000)
             t -= 1
+            
         
 
 

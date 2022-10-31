@@ -5,11 +5,11 @@ import time
 model = load_model('keras_model.h5')
 cap = cv2.VideoCapture(0)
 data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
-end_time = time.time() + 3
 start_time = time.time()
-while end_time > time.time():
+elapsed_time = 0
+while elapsed_time < 3:
     current_time = time.time()
-    elapsed_time = current_time - start_time
+    elapsed_time = current_time - start_time 
     ret, frame = cap.read()
     resized_frame = cv2.resize(frame, (224, 224), interpolation = cv2.INTER_AREA)
     image_np = np.array(resized_frame)
@@ -21,5 +21,6 @@ while end_time > time.time():
     # print(prediction)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
+
             
 # After the loop release the cap object
