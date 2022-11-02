@@ -3,13 +3,14 @@ import numpy as np
 import cv2
 import time
 from keras.models import load_model
+from math import floor
 
 class RPS:
     def __init__(self, frame, prediction):
         self.options = ['Rock', 'Paper', 'Scissors', 'Nothing']
         self.user_wins = 0
         self.computer_wins = 0
-        self.model = load_model('keras_model.h5')
+        self.model = load_model('keras_model2.h5')
         self.cap = cv2.VideoCapture(0)
         self.data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
         self.frame = frame
@@ -45,15 +46,15 @@ class RPS:
 
     def countdown(self, t, start_time):
         elapsed_time = time.time() - start_time
-        min, sec = divmod(elapsed_time,60)
-        timer = f'{min}, {sec}'
-        # print(timer, end='\r')
+        min, sec = divmod(int(4 - elapsed_time),60)
+        timer = f'{sec}'
+        print(timer, end='\r')
         if t - elapsed_time < 0:
             return False
         return True
             
     def display_camera(self, data, cap):
-        ret, frame = cap.read()
+        ret, frame = cap.read()         #TODO refactor self. or take parameters out of brackets
         resized_frame = cv2.resize(frame, (224, 224), interpolation = cv2.INTER_AREA)
         image_np = np.array(resized_frame)
         normalized_image = (image_np.astype(np.float32) / 127.0) - 1 # Normalize the image
@@ -63,6 +64,10 @@ class RPS:
 
     def predict_model(self, model, data, frame):
         self.prediction = model.predict(data)
+
+    def end_game(self):
+            self.cap.release()
+            cv2.destroyAllWindows()
         
 
 frame = []
@@ -74,7 +79,7 @@ def play():
     start_time = time.time()
     while game.user_wins <3 or game.computer_wins <3: 
         start_time = time.time()       
-        while game.countdown(5, start_time) == True:
+        while game.countdown(3, start_time) == True:
             game.display_camera(game.data, game.cap)
             
         game.predict_model(game.model, game.data, game.frame)
@@ -86,10 +91,14 @@ def play():
 
         if game.user_wins == 3:
             print('Congrats you won the game!')
+            game.end_game()
+            break
         elif game.computer_wins == 3: 
             print("You lost the game!")
+            game.end_game()
+            break
         elif cv2.waitKey(1) & 0xFF == ord('q'):
-            game.cap.release()
-            cv2.destroyAllWindows()
+            game.end_game()
+            break
 
 play()
