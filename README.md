@@ -1,12 +1,24 @@
-# Computer Vision RPS
+# Computer Vision Rock, Paper, Scissors
+
+In this project I have created a game of Rock, Paper, Scissors using python and machine learning. The purpose of this project was to build on my knowledge of python and OOP, and start expanding my knowledge into machine learning and using cv2 to operate and get data from the camera.
+
+**Technologies used:**
+
+- Python
+- [Teachable Machine](https://teachablemachine.withgoogle.com/) - This has allowed me to make a model which will predict the poses the user makes. 
+- Tensorflow - Used in conjunction with Teachable Machine to process the model.
+- OpenCV-Python - used to process the image from the camera 
+
+## Milestone 1
+
+Using Teachable Machine I created the keras_model.h5 for the Rock, Paper, Scissors game, training the model with images from my webcam of the Rock, Paper and Scissors poses as well as doing nothing. After training, this model predicts what pose the user is holding up to the camera or if they are not holding up a pose.
+
 
 ## Milestone 2
-I created the model for the rock, paper, scissors game, training the model with several images from my webcam of the rock, paper and scissors poses as well as doing nothing as a control.
-Technologies used: Teachable machine programme, downloaded through Tensorflow. This will allow me to assign the poses to the users actions and hopefully identify who will win or lose. 
 
-## Milestone 4
-I created the game rock paper scissors with a user input, where the computer chooses between Rock, Paper, or Scissors, compares it to the users input and then a winner is decided based on the normal outcomes for a rock paper scissors game.
-Technologies used: python
+I created the game Rock, Paper, Scissors. The game will ask the user for their decision - 'Rock, Paper or Scissors...?' as an input. It will then compare this with a randomly selected choice from the computer using the get_winner() function to decide who won the game. If you win it prints "You won!", if you lose it prints "You lose!" and if both answers are the same it prints "You tied."
+
+
 
 ``` python
 import random
@@ -45,4 +57,6 @@ def play():
 play()
 ```
 ![] (Screenshots/RPS1.PNG)
+
+## Milestone 3
 
