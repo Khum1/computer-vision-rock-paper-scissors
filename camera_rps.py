@@ -35,7 +35,6 @@ class RPS:
         print(self.prediction)
         max_index = np.argmax(self.prediction)
         self.user_choice = self.options[max_index]
-        print(max_index)
 
     def countdown(self, t, start_time):
         elapsed_time = time.time() - start_time
